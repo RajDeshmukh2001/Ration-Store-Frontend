@@ -7,6 +7,18 @@
     font-family: "Poppins", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .sidebar {
     height: calc(100vh - 5rem);
+}
+
+.user-info > div > span:first-of-type {
+    display: none;
+}
+
+#select-card label {
+    display: none;
 }

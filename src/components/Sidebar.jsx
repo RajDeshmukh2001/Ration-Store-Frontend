@@ -14,14 +14,14 @@ const Sidebar = () => {
 
     return (
         <>
-            <div className="sidebar hidden w-1/5 md:block">
+            <div className="sidebar hidden w-1/5 lg:block">
                 <div className="fixed left-0 top-[5rem] h-full w-1/6 shadow-md bg-white">
                     <div className="flex flex-col">
                         {routes.map((route) => (
                             <Link
                                 key={route.id}
                                 to={route.route}
-                                className={`border-b-[1px] border-gray-100 px-10 py-6 text-lg font-medium transition duration-700 ease-in-out ${route.route === path ? "bg-sky-700 text-white hover:bg-sky-700" : "bg-white hover:bg-sky-700  hover:text-white"}`}
+                                className={`border-b-[1px] border-gray-100 px-10 py-6 text-lg font-medium transition duration-700 ease-in-out ${route.route === path ? "bg-primary text-white hover:bg-primary" : "bg-white hover:bg-primary  hover:text-white"}`}
                             >
                                 {route.name}
                             </Link>

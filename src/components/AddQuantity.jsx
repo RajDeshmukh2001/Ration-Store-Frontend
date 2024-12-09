@@ -27,12 +27,13 @@ const AddQuantity = ({ rationInputValues, setRationInputValues, totalQuantity, s
 
     return (
         <>
-            <div className="w-full col-span-2 border py-6 px-10 bg-white rounded-md max-h-max">
+            <div className="w-full md:col-span-2 border p-5 md:py-6 md:px-10 bg-white rounded-md max-h-max">
 
                 <div className="flex flex-col gap-4">
-                    <div className="flex items-center justify-between">
-                        <h1 className="text-xl font-semibold">RFID: {accountDetails?.RFID}</h1>
-                        <div className="flex flex-col gap-2 items-end">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
+                        <h1 className="text-base md:text-xl font-semibold">RFID: {accountDetails?.RFID}</h1>
+
+                        <div className="flex flex-col gap-1.5 md:gap-2 md:items-end">
                             <h4 className="text-[15px]">
                                 Max Quantity:
                                 <span className="ml-1.5 tracking-wide font-medium">
@@ -48,11 +49,13 @@ const AddQuantity = ({ rationInputValues, setRationInputValues, totalQuantity, s
                             </h4>
                         </div>
                     </div>
-                    <Divider />
-                    <div className="flex flex-col gap-3">
-                        <h2 className="text-base font-medium">Select Quantity:</h2>
 
-                        <div className="flex items-center justify-between flex-wrap gap-10">
+                    <Divider />
+
+                    <div className="flex flex-col gap-3">
+                        <h2 className="text-[15px] md:text-base font-medium">Select Quantity:</h2>
+
+                        <div className="flex items-center justify-between flex-wrap gap-y-8 md:gap-10">
                             <RationItemInputs
                                 rationInputValues={rationInputValues} 
                                 accountDetails={accountDetails}

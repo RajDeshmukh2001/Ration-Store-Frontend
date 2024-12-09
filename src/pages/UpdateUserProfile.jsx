@@ -23,16 +23,27 @@ const UpdateUserProfile = () => {
         setFormData({ ...formData, [name]: value });
     }
 
+    const handleSelectChange = (value) => {
+        setFormData({ ...formData, rationCardType: value });
+    };
+
+    console.log(formData);
+
     const userID = accountDetails?._id?.toString();
 
     return (
         <>
             {!loggedIn && <Navigate to="/login" replace />}
             <div className="w-full flex justify-center px-4 md:px-12">
-                <div className="my-10 max-w-7xl flex flex-col gap-8 border py-8 px-10 rounded-md bg-white"> 
-                    <h2 className="text-xl font-semibold text-sky-700">Update Profile</h2>
+                <div className="my-10 max-w-7xl w-full flex flex-col gap-8 border p-6 md:py-8 md:px-10 rounded-md bg-white">
+                    <h2 className="md:text-xl font-semibold text-primary">Update Profile</h2>
 
-                    <UpdateUserForm formData={formData} handleInputs={handleInputs} userID={userID} />
+                    <UpdateUserForm
+                        formData={formData}
+                        handleInputs={handleInputs}
+                        userID={userID}
+                        handleSelectChange={handleSelectChange}
+                    />
                 </div>
             </div>
         </>

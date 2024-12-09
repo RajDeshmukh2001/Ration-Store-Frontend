@@ -9,15 +9,15 @@ const Orders = () => {
     const { handleUpdateStatus } = useHandleUpdateStatus();
 
     return (
-        <div className="w-full flex flex-col gap-10 py-10 mx-24">
-            <Table aria-label="Example static collection table">
+        <div className="w-full px-4 py-8 md:py-10 md:mx-16">
+            <Table radius="sm" aria-label="Example static collection table">
                 <TableHeader>
                     <TableColumn>ORDER ID</TableColumn>
                     <TableColumn>USER ID</TableColumn>
                     <TableColumn>RFID</TableColumn>
                     <TableColumn>RATION CARD</TableColumn>
                     <TableColumn align="center">FAMILY MEMBERS</TableColumn>
-                    <TableColumn>ORDERED RATION</TableColumn>
+                    <TableColumn>RATION (ORDER)</TableColumn>
                     <TableColumn align="center">MAXIMUM QTY</TableColumn>
                     <TableColumn align="center">TOTAL QTY</TableColumn>
                     <TableColumn align="center">TOTAL PRICE</TableColumn>
@@ -44,8 +44,8 @@ const Orders = () => {
                                 <TableCell>{order.maxQuantity} kg</TableCell>
                                 <TableCell>{order.totalQuantity} kg</TableCell>
                                 <TableCell>₹ {order.totalPrice}</TableCell>
-                                <TableCell 
-                                    className={`capitalize ${order.status === 'pending' ? 'text-sky-700' : 'text-green-600'}`}
+                                <TableCell
+                                    className={`capitalize ${order.status === 'pending' ? 'text-primary' : 'text-green-600'}`}
                                 >
                                     {order.status}
                                 </TableCell>
@@ -61,14 +61,17 @@ const Orders = () => {
                                             <DropdownItem>
                                                 <Link to={`/orders/${order._id}`} className="flex w-full">View Order</Link>
                                             </DropdownItem>
-                                            <DropdownItem>
-                                                <button
-                                                    onClick={() => handleUpdateStatus(order._id)}
-                                                    className="flex w-full tracking-wide"
-                                                >
-                                                    Accepted
-                                                </button>
-                                            </DropdownItem>
+                                            {order.status === 'pending'
+                                                &&
+                                                <DropdownItem>
+                                                    <button
+                                                        onClick={() => handleUpdateStatus(order._id)}
+                                                        className="flex w-full tracking-wide"
+                                                    >
+                                                        Accepted
+                                                    </button>
+                                                </DropdownItem>
+                                            }
                                         </DropdownMenu>
                                     </Dropdown>
                                 </TableCell>

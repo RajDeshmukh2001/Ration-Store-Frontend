@@ -4,7 +4,7 @@ import { useGetDataContext } from '../context/GetDataContext';
 const RationItemInputs = ({ rationInputValues, accountDetails, totalQuantity, maxQuantity, handleInputChange }) => {
     const { rationItems } = useGetDataContext();
 
-    const getPriceKey = (rationCardType) => rationCardType.replace(/\s+/g, "_");
+    const getPriceKey = (rationCardType) => rationCardType?.replace(/\s+/g, "_");
 
     const filterItems = rationItems?.filter((item) => {
         const allowedItems = ['Wheat', 'Rice', 'Sugar'];
@@ -23,7 +23,7 @@ const RationItemInputs = ({ rationInputValues, accountDetails, totalQuantity, ma
                     <div key={item._id} className="min-w-32 flex flex-col">
                         <label htmlFor={item.itemname} className="flex items-center justify-between capitalize text-gray-700 text-[15px]">
                             {item.itemname}
-                            <span className="text-[13px] tracking-wide text-gray-500">
+                            <span className="text-[13px] tracking-wide text-gray-600">
                                 ₹{item.prices[getPriceKey(accountDetails?.rationCardType)]}/kg
                             </span>
                         </label>
@@ -35,7 +35,7 @@ const RationItemInputs = ({ rationInputValues, accountDetails, totalQuantity, ma
                             defaultValue={0}
                             name={`${item.itemname}Quantity`}
                             onChange={handleInputChange}
-                            className="mt-2 rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 placeholder:text-[15px] focus:outline-2 focus:-outline-offset-2 focus:outline-sky-700 md:text-[15px]"
+                            className="mt-2 rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 placeholder:text-[15px] focus:outline-2 focus:-outline-offset-2 focus:outline-primary md:text-[15px]"
                         />
                     </div>
                 ))

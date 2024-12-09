@@ -8,7 +8,9 @@ export const DataProvider = ({ children }) => {
     const [rationItems, setRationItems] = useState();
     const [userOrders, setUserOrders] = useState();
     const [orders, setOrders] = useState();
+    const [singleOrder, setSingleOrder] = useState();
     const [users, setUsers] = useState();
+    const [singleUser, setSingleUser] = useState();
 
     const { accountDetails } = useAuthContext();
     const id = accountDetails?._id?.toString();
@@ -53,6 +55,24 @@ export const DataProvider = ({ children }) => {
         }
     }
 
+    const getSingleOrder = async (id) => {
+        try {
+            const res = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/order/${id}`);
+            setSingleOrder(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const getSingleUser = async (id) => {
+        try {
+            const res = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/user/${id}`);
+            setSingleUser(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     useEffect(() => {
         getRationItems();
     }, []);
@@ -68,7 +88,19 @@ export const DataProvider = ({ children }) => {
 
 
     return (
-        <GetDataContext.Provider value={{ rationItems, userOrders, users, orders, getRationItems, getUserOrders, getAllOrders }}>
+        <GetDataContext.Provider value={{ 
+            rationItems, 
+            userOrders, 
+            users, 
+            orders, 
+            singleOrder,
+            singleUser,
+            getRationItems, 
+            getUserOrders, 
+            getAllOrders,
+            getSingleOrder,
+            getSingleUser
+        }}>
             {children}
         </GetDataContext.Provider>
     )

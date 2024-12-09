@@ -5,22 +5,9 @@ import { useAuthContext } from '../context/AuthContext';
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, AvatarIcon } from "@nextui-org/react";
 
 const UserProfileMenu = () => {
-    const { setLoggedIn, setAccountDetails, accountDetails } = useAuthContext();
+    const { accountDetails, handleLogout } = useAuthContext();
     const navigate = useNavigate();
 
-    const handleLogout = async () => {
-        try {
-            const res = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/auth/logout`, { withCredentials: true });
-            if (res.status === 200) {
-                toast.success(res.data.message);
-                navigate('/');
-                setLoggedIn(false);
-                setAccountDetails()
-            }
-        } catch (error) {
-            toast.error(error.response.data.message);
-        }
-    }
     return (
         <div className="hidden md:block">
             {!accountDetails?.isAdmin ?
@@ -34,7 +21,7 @@ const UserProfileMenu = () => {
                                 icon={<AvatarIcon />}
                                 className="transition-transform"
                                 classNames={{
-                                    base: "bg-gradient-to-br from-sky-200 to-sky-600",
+                                    base: "bg-gradient-to-br from-blue-200 to-blue-600",
                                     icon: "text-black/80",
                                 }}
                             />
@@ -49,7 +36,7 @@ const UserProfileMenu = () => {
                                 <Link to="/my_orders" className="w-full">My Orders</Link>
                             </DropdownItem>
 
-                            <DropdownItem key="logout" color="danger" onClick={handleLogout}>
+                            <DropdownItem key="logout" color="danger" onClick={() => handleLogout(navigate)}>
                                 Logout
                             </DropdownItem>
                         </DropdownMenu>
@@ -66,7 +53,7 @@ const UserProfileMenu = () => {
                                 icon={<AvatarIcon />}
                                 className="transition-transform"
                                 classNames={{
-                                    base: "bg-gradient-to-br from-sky-200 to-sky-600",
+                                    base: "bg-gradient-to-br from-blue-200 to-blue-600",
                                     icon: "text-black/80",
                                 }}
                             />
@@ -76,7 +63,7 @@ const UserProfileMenu = () => {
                             <DropdownItem key="logout">
                                 {accountDetails?.username}
                             </DropdownItem>
-                            <DropdownItem key="logout" color="danger" onClick={handleLogout}>
+                            <DropdownItem key="logout" color="danger" onClick={() => handleLogout(navigate)}>
                                 Logout
                             </DropdownItem>
                         </DropdownMenu>

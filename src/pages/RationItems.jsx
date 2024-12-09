@@ -22,7 +22,7 @@ const RationItems = () => {
     };
 
     return (
-        <div className="mt-0 md:mt-10 w-full flex justify-center px-4 py-12 md:px-12 md:py-0">
+        <div id="ration" className="mt-0 md:mt-10 w-full flex justify-center px-4 py-5 md:px-12 md:py-0 scroll-mt-16 md:scroll-mt-24">
             <div className="max-w-7xl flex flex-col gap-4">
                 <h1 className="text-lg md:text-2xl font-bold">Ration Items</h1>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-10 place-content-center md:mt-3">
@@ -40,7 +40,7 @@ const RationItems = () => {
                             </CardBody>
                             <CardFooter className="text-small justify-between">
                                 <h1 className="font-semibold capitalize">{item.itemname}</h1>
-                                <p className="text-sky-700 tracking-wide">₹{item.prices.Antyodaya_Anna_Yojana}/kg</p>
+                                <p className="text-primary tracking-wide">₹{item.prices.Antyodaya_Anna_Yojana}/kg</p>
                             </CardFooter>
                         </Card>
                     ))}

@@ -29,7 +29,7 @@ const useHandleUpdateForm = () => {
             }
         } catch (error) {
             setLoading(false);
-            console.error(error.response.data.message || "An error occurred");
+            toast.error(error.response.data.message || "An error occurred");
         }
     }
     return { handleSubmit, loading }

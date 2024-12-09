@@ -10,12 +10,13 @@ import Users from './pages/admin/Users';
 import Orders from './pages/admin/Orders';
 import OrderItems from './pages/OrderItems';
 import UserProfile from './pages/UserProfile';
+import SingleUser from './pages/admin/SingleUser';
 import AdminLogin from './pages/admin/AdminLogin';
+import SingleOrder from './pages/admin/SingleOrder';
 import ManageRation from './pages/admin/ManageRation';
 import AddRationItem from './pages/admin/AddRationItem';
 import UpdateUserProfile from './pages/UpdateUserProfile';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import SingleUser from './pages/admin/SingleUser';
 
 const router = createBrowserRouter([
     {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
             {
                 path: '/orders',
                 element: <Orders />
+            },
+            {
+                path: '/orders/:id',
+                element: <SingleOrder />
             },
         ]
     },

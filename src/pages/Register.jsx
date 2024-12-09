@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { Navigate, useNavigate } from "react-router-dom";
 import useHandleSubmitForm from '../custom_hooks/useHandleSubmitForm';
+import Button from '../components/Button';
 
 const Registration = () => {
     const { handleSubmitForm } = useHandleSubmitForm();
@@ -51,7 +52,7 @@ const Registration = () => {
                                     value={user.email}
                                     onChange={handleInputs}
                                     placeholder="Enter your email"
-                                    className="block w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-sky-700 md:text-base"
+                                    className="block w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary md:text-base"
                                 />
                             </div>
                         </div>
@@ -70,7 +71,7 @@ const Registration = () => {
                                     value={user.phone}
                                     onChange={handleInputs}
                                     placeholder="Enter your phone number"
-                                    className="block w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-sky-700 md:text-base"
+                                    className="block w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary md:text-base"
                                 />
                             </div>
                         </div>
@@ -90,7 +91,7 @@ const Registration = () => {
                                     value={user.password}
                                     onChange={handleInputs}
                                     placeholder="Create a password"
-                                    className="block w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-sky-700 md:text-base"
+                                    className="block w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary md:text-base"
                                 />
                             </div>
                         </div>
@@ -110,18 +111,13 @@ const Registration = () => {
                                     value={user.cpassword}
                                     onChange={handleInputs}
                                     placeholder="Confirm your password"
-                                    className="block w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-sky-700 md:text-base"
+                                    className="block w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary md:text-base"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <button
-                                type="submit"
-                                className="flex w-full justify-center mt-8 rounded-md px-3 py-1.5 font-medium bg-sky-700 border-2 border-sky-700 text-white hover:bg-transparent hover:text-sky-700 transition duration-500 ease-in-out"
-                            >
-                                REGISTER
-                            </button>
+                            <Button value="REGISTER" btn={true} />
                         </div>
                     </form>
                 </div>

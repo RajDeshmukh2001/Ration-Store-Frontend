@@ -15,7 +15,7 @@ const Login = () => {
 
                 <p className="mt-10 text-center text-sm text-gray-500">
                     New user?{' '}
-                    <Link to="/register" className="font-semibold text-sky-700 hover:text-sky-500">
+                    <Link to="/register" className="font-semibold text-primary hover:text-primary-500">
                         Create account
                     </Link>
                 </p>

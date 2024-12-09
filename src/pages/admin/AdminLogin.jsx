@@ -7,8 +7,8 @@ const AdminLogin = () => {
 
     return (
         <div className="flex min-h-screen items-center justify-center px-6 md:py-12 lg:px-8">
-            <div className="flex flex-col gap-5 min-w-96 border px-6 py-8 md:py-10 lg:px-8 rounded-md bg-white">
-                <h2 className="text-sky-700 text-base md:text-xl text-center font-semibold">RATION STORE</h2>
+            <div className="flex flex-col gap-5 min-w-96 border py-8 md:py-10 px-8 rounded-md bg-white">
+                <h2 className="text-primary text-base md:text-xl text-center font-semibold">RATION STORE</h2>
                 
                 <LoginForm title="Admin Panel" URI={URI} redirectTo="/" isAdmin={true} />
 

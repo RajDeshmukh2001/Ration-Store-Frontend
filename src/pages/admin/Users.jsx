@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { useGetDataContext } from "../../context/GetDataContext";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Dropdown, DropdownTrigger, Button, DropdownMenu, DropdownItem } from "@nextui-org/react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Dropdown, DropdownTrigger, Button, DropdownMenu, DropdownItem, User } from "@nextui-org/react";
 
 const Users = () => {
     const { users } = useGetDataContext();
 
     return (
-        <div className="w-full flex flex-col gap-10 py-10 mx-24">
-            <Table aria-label="Example static collection table">
+        <div className="w-full px-4 py-8 md:py-10 md:mx-16">
+            <Table radius="sm" aria-label="Example static collection table">
                 <TableHeader>
                     <TableColumn>USER ID</TableColumn>
                     <TableColumn>FULLNAME</TableColumn>
-                    <TableColumn>EMAIL</TableColumn>
                     <TableColumn>PHONE</TableColumn>
                     <TableColumn>RFID</TableColumn>
                     <TableColumn>RATION CARD</TableColumn>
@@ -25,8 +24,15 @@ const Users = () => {
                         users?.map((user) => (
                             <TableRow key={user._id}>
                                 <TableCell>#{user._id.slice(20)}</TableCell>
-                                <TableCell>{user.fullname}</TableCell>
-                                <TableCell>{user.email}</TableCell>
+                                <TableCell className="user-info">
+                                    <User
+                                        name={user.fullname}
+                                        description={user.email}
+                                        classNames={{
+                                            description: "text-gray-700"
+                                        }}
+                                    />
+                                </TableCell>
                                 <TableCell>{user.phone}</TableCell>
                                 <TableCell>{user.RFID}</TableCell>
                                 <TableCell>{user.rationCardType}</TableCell>

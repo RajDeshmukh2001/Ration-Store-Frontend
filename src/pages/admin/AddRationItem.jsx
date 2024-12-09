@@ -3,6 +3,7 @@ import { toast } from 'sonner';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGetDataContext } from '../../context/GetDataContext';
+import Button from '../../components/Button';
 
 const rationCard = [
     { key: 1, text: "Antyodaya Anna Yojana (AAY)", value: "AAY" },
@@ -46,13 +47,14 @@ const AddRationItem = () => {
         }
     }
     return (
-        <div className="w-full flex flex-col gap-10 py-10 mx-24">
+        <div className="w-full flex flex-col gap-10 px-4 py-8 md:py-10 md:mx-16">
             <div className="flex flex-col items-center ">
-                <div className="max-w-max border px-6 py-8 md:py-6 lg:px-8 rounded-md bg-white">
-                    <h1 className="text-xl font-semibold text-sky-700">Add Ration Item</h1>
+                <div className="w-full border p-5 rounded-md bg-white md:max-w-max md:py-6 lg:px-8">
+                    <h1 className="text-lg md:text-xl font-semibold text-primary">Add Ration Item</h1>
+
                     <form method="POST" className="mt-10 flex flex-col gap-10" onSubmit={handleAddRation}>
-                        <div className="w-full flex items-center gap-5">
-                            <label htmlFor="name">Item Name: </label>
+                        <div className="w-full flex flex-col gap-2 md:flex-row md:items-center md:gap-5">
+                            <label htmlFor="name" className="text-[15px] md:text-base">Item Name: </label>
                             <input
                                 id="name"
                                 name="itemname"
@@ -61,16 +63,16 @@ const AddRationItem = () => {
                                 value={items.itemname}
                                 onChange={handleInputs}
                                 placeholder="Enter the ration item name"
-                                className="block md:min-w-96 rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 placeholder:text-[15px] focus:outline-2 focus:-outline-offset-2 focus:outline-sky-700 md:text-base"
+                                className="block md:min-w-96 rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 placeholder:text-[15px] focus:outline-2 focus:-outline-offset-2 focus:outline-primary md:text-base"
                             />
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <h2>Prices <span className="text-sm text-gray-600 italic">(per kg)</span>  :</h2>
-                            <div className="flex gap-10 items-center">
+                            <h2 className="text-[15px] md:text-base">Prices <span className="text-sm text-gray-600 italic">(per kg)</span>  :</h2>
+                            <div className="flex flex-col md:flex-row gap-10 md:items-center">
                                 {rationCard.map((type) => (
                                     <div key={type.key}>
-                                        <label htmlFor={type.value} className="text-[15px] text-gray-600 italic">{type.text}</label>
+                                        <label htmlFor={type.value} className="text-[15px] text-gray-700 italic">{type.text}</label>
                                         <input
                                             id={type.value}
                                             name={type.value}
@@ -79,16 +81,14 @@ const AddRationItem = () => {
                                             value={items[type.value]}
                                             onChange={handleInputs}
                                             placeholder="Enter the ration item name"
-                                            className="block mt-2 w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 placeholder:text-[15px] focus:outline-2 focus:-outline-offset-2 focus:outline-sky-700 md:text-base"
+                                            className="block mt-2 w-full rounded-md bg-white px-3 py-2 text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 placeholder:text-[15px] focus:outline-2 focus:-outline-offset-2 focus:outline-primary md:text-base"
                                         />
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        <button type="submit" className="mt-4 flex w-full justify-center rounded-md px-3 py-1.5 font-medium bg-sky-700 border-2 border-sky-700 text-white hover:bg-transparent hover:text-sky-700 transition duration-500 ease-in-out">
-                            Add Item
-                        </button>
+                        <Button value="Add Item" btn={true} />
                     </form>
                 </div>
             </div>

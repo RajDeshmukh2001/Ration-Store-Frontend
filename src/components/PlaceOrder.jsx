@@ -16,7 +16,7 @@ const PlaceOrder = ({ rationInputValues, totalQuantity }) => {
 
     const handlePlaceOrder = async () => {
         if (totalQuantity === 0) {
-            toast.error("Please ensure you have selected quantities.");
+            toast.error("Please enter valid quantities");
             return;
         }
 
@@ -35,6 +35,7 @@ const PlaceOrder = ({ rationInputValues, totalQuantity }) => {
 
         try {
             const res = await axios.post(`${import.meta.env.VITE_APP_API_BASE_URL}/order/place_order`, orderData);
+            
             if (res.status === 201) {
                 toast.success(res.data.message);
                 getUserOrders();
@@ -42,7 +43,7 @@ const PlaceOrder = ({ rationInputValues, totalQuantity }) => {
                 navigate('/my_orders');
             }
         } catch (error) {
-            toast.error(error);
+            toast.error(error.response?.data?.message);
         }
     };
 
@@ -58,7 +59,7 @@ const PlaceOrder = ({ rationInputValues, totalQuantity }) => {
                 return {
                     item: itemName,
                     itemPrice,
-                    itemTotalQuantity: rationInputValues[key],
+                    itemTotalQuantity: Number(rationInputValues[key]),
                     itemTotalPrice: itemPrice * rationInputValues[key],
                 };
             }
@@ -72,15 +73,15 @@ const PlaceOrder = ({ rationInputValues, totalQuantity }) => {
 
 
     return (
-        <div className="col-span-1 flex flex-col gap-5 border py-6 px-10 bg-white rounded-md">
+        <div className="flex flex-col gap-5 border md:col-span-1 p-5 md:py-6 md:px-10 bg-white rounded-md">
             <div className="flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                    <p className="text-[15px]">Ration Card:</p>
-                    <p className="text-[15px]">{accountDetails?.rationCardType}</p>
+                <div className="flex items-center md:justify-between gap-x-5 md:gap-0">
+                    <p className="text-[15px] text-gray-800">Ration Card:</p>
+                    <p className="text-[15px] font-medium">{accountDetails?.rationCardType}</p>
                 </div>
-                <div className="flex items-center justify-between">
-                    <p className="text-[15px]">Total Family Members:</p>
-                    <p className="text-[15px]">{accountDetails?.familyMembers}</p>
+                <div className="flex items-center md:justify-between gap-x-5 md:gap-0">
+                    <p className="text-[15px] text-gray-800">Total Family Members:</p>
+                    <p className="text-[15px] font-medium">{accountDetails?.familyMembers}</p>
                 </div>
             </div>
             <Divider />
@@ -89,7 +90,7 @@ const PlaceOrder = ({ rationInputValues, totalQuantity }) => {
 
             <button
                 onClick={handlePlaceOrder}
-                className="rounded-md px-3 py-1.5 font-medium bg-sky-700 border-2 border-sky-700 text-white hover:bg-transparent hover:text-sky-700 transition duration-500 ease-in-out"
+                className="rounded-md px-3 py-1.5 font-medium bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary transition duration-500 ease-in-out"
             >
                 Place Order
             </button>

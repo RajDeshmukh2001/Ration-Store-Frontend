@@ -16,14 +16,14 @@ const OrderTable = ({ rationInputValues, totalQuantity }) => {
         }
     });
 
-    const getPriceKey = (rationCardType) => rationCardType.replace(/\s+/g, "_");
+    const getPriceKey = (rationCardType) => rationCardType?.replace(/\s+/g, "_");
     let totalPrice = 0;
 
     return (
         <>
             <table className="w-full border-collapse table-auto th-td-padding">
                 <thead>
-                    <tr className="text-base">
+                    <tr className="text-[15px] md:text-base">
                         <th className="text-start font-semibold">Item</th>
                         <th className="font-semibold">Total Qty</th>
                         <th className="text-end font-semibold">Price</th>
@@ -41,7 +41,7 @@ const OrderTable = ({ rationInputValues, totalQuantity }) => {
                             <tr key={item._id}>
                                 <td>{item.itemname}</td>
                                 <td className="text-center">{quantity} kg</td>
-                                <td className="text-end">₹{itemTotal}</td>
+                                <td className="text-end">₹ {itemTotal}</td>
                             </tr>
                         );
                     })}

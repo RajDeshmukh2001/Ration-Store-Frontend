@@ -1,7 +1,8 @@
 const { nextui } = require("@nextui-org/react");
+const withMT = require("@material-tailwind/react/utils/withMT");
 
 /** @type {import('tailwindcss').Config} */
-export default {
+export default withMT({
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -9,6 +10,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#0369A1",
+      },
       screens: {
         // Tablet
         'md': '469px',
@@ -20,5 +24,5 @@ export default {
   },
   darkMode: "class",
   plugins: [nextui()]
-}
+})
 

@@ -8,7 +8,8 @@ const UserProfile = () => {
     return (
         <>
             {!loggedIn && <Navigate to="/login" replace />}
-            <div className="md:mt-10 w-full flex justify-center px-4 md:px-12">
+
+            <div className="mt-6 md:mt-10 w-full flex justify-center px-4 md:px-12">
                 <div className="max-w-7xl flex flex-col gap-10">
                     <UserProfileDetails />
 

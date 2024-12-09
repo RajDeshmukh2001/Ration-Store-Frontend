@@ -1,18 +1,15 @@
-import { Card, CardBody, CardFooter } from '@nextui-org/react';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Card, CardBody } from '@nextui-org/react';
+import { TbUserFilled } from "react-icons/tb";
 import { useGetDataContext } from '../../context/GetDataContext';
+import { MdOutlineShoppingCart, MdOutlineCalendarMonth } from "react-icons/md";
+import TotalRevenue from '../../dashboard_data/TotalRevenue';
+import TotalOrders from '../../dashboard_data/TotalOrders';
+import OrdersToday from '../../dashboard_data/OrdersToday';
+import TotalUsers from '../../dashboard_data/TotalUsers';
 
 const AdminHomePage = () => {
-    const [totalRevenue, setTotalRevenue] = useState(0);
     const { orders, users } = useGetDataContext();
-
-    useEffect(() => {
-        const revenue = orders?.reduce((acc, order) => {
-            return acc + (order.totalPrice || 0);
-        }, 0);
-
-        setTotalRevenue(revenue);
-    }, [orders]);
 
     const [orderToday, setOrderToday] = useState(0);
 
@@ -28,39 +25,21 @@ const AdminHomePage = () => {
     }, [orders]);
 
     return (
-        <div className="w-full flex flex-col gap-10 py-10 mx-24">
-            <div className="w-full grid gap-y-6 md:grid-cols-3 md:gap-x-12 md:gap-y-8">
-                <Card isPressable radius="sm" shadow="sm">
-                    <CardBody>
-                        <h1 className="text-gray-600 text-sm md:text-base">Total Revenue</h1>
-                        <p className="text-sky-700 font-bold tracking-wide mt-2 text-lg md:text-2xl">₹ {totalRevenue}</p>
-                    </CardBody>
-                    <CardFooter className="bg-sky-700" />
-                </Card>
+        <div className="w-full flex flex-col gap-10 px-4 py-8 md:py-10 md:mx-10">
+            <div className="grid md:grid-cols-2 gap-4">
+                <div className="w-full grid gap-y-6 md:grid-cols-2 md:gap-x-12 md:gap-y-8">
+                    <TotalRevenue />
 
-                <Card isPressable radius="sm" shadow="sm">
-                    <CardBody>
-                        <h1 className="text-gray-600 text-sm md:text-base">Total Orders</h1>
-                        <p className="text-green-700 font-bold tracking-wide mt-2 text-lg md:text-2xl">{orders.length}</p>
-                    </CardBody>
-                    <CardFooter className="bg-green-700" />
-                </Card>
+                    <TotalOrders />
 
-                <Card isPressable radius="sm" shadow="sm">
-                    <CardBody>
-                        <h1 className="text-gray-600 text-sm md:text-base">Total Users</h1>
-                        <p className="text-orange-700 font-bold tracking-wide mt-2 text-lg md:text-2xl">{users.length}</p>
-                    </CardBody>
-                    <CardFooter className="bg-orange-700" />
-                </Card>
+                    <OrdersToday />
 
-                <Card isPressable radius="sm" shadow="sm">
-                    <CardBody>
-                        <h1 className="text-gray-600 text-sm md:text-base">Orders Today</h1>
-                        <p className="text-yellow-700 font-bold tracking-wide mt-2 text-lg md:text-2xl">{orderToday}</p>
-                    </CardBody>
-                    <CardFooter className="bg-yellow-700" />
-                </Card>
+                    <TotalUsers />
+                </div>
+            </div>
+
+            <div>
+
             </div>
         </div>
     )
