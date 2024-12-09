@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Button from "../../components/Button";
-import { useGetDataContext } from "../../context/GetDataContext";
+import { useAuthContext } from "../../context/AuthContext";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
+import { useGetDataContext } from "../../context/GetDataContext";
 
 const images = {
     Wheat: './wheat_bowl.jpg',
@@ -13,6 +14,7 @@ const images = {
 }
 
 const ManageRation = () => {
+    const { loggedIn } = useAuthContext();
     const { rationItems } = useGetDataContext();
 
     const getImage = (itemName) => {
@@ -25,6 +27,7 @@ const ManageRation = () => {
 
     return (
         <>
+            {!loggedIn && <Navigate to="/admin_login" replace />}
             <div className="w-full flex flex-col gap-10 px-4 py-8 md:py-10 md:mx-16">
                 <div className="self-end">
                     <Button value="Add Ration Item" navigatTo="/ration/add_ration_item" btn={false} />
