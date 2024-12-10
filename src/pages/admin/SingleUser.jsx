@@ -1,10 +1,10 @@
 import { format } from 'date-fns';
 import { useEffect } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
 import { PiDotsThreeVerticalBold } from 'react-icons/pi';
 import { useAuthContext } from '../../context/AuthContext';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { useGetDataContext } from '../../context/GetDataContext';
-import { Avatar, Card, CardBody, CardHeader, Divider, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Dropdown, DropdownTrigger, Button, DropdownMenu, DropdownItem } from '@nextui-org/react';
+import { Avatar, Card, CardBody, CardHeader, Divider, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Dropdown, DropdownTrigger, Button, DropdownMenu, DropdownItem, Breadcrumbs, BreadcrumbItem } from '@nextui-org/react';
 
 const SingleUser = () => {
     const { id } = useParams();
@@ -18,10 +18,17 @@ const SingleUser = () => {
     return (
         <>
             {!loggedIn && <Navigate to="/admin_login" replace />}
-            <div className="w-full px-4 py-8 md:py-10 md:mx-16">
+            <div className="w-full flex flex-col gap-5 px-4 py-8 md:py-10 md:mx-16">
+                <Breadcrumbs className="ml-1 block md:hidden">
+                    <BreadcrumbItem>
+                        <Link to="/users">Users</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem>View User</BreadcrumbItem>
+                </Breadcrumbs>
+
                 <div className="flex flex-col gap-6 md:gap-10">
                     <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
-                        <Card shadow="none" radius="sm" className="w-full basis-1/3 border p-2.5 h-full">
+                        <Card shadow="none" radius="sm" className="w-full md:basis-1/3 border p-2.5 md:h-full">
                             <CardHeader className="flex items-center justify-center">
                                 <Avatar isBordered showFallback color="primary" src="https://images.unsplash.com/broken" />
                             </CardHeader>
@@ -39,7 +46,7 @@ const SingleUser = () => {
                             </CardBody>
                         </Card>
 
-                        <Card shadow="none" radius="sm" className="w-full basis-3/5 border h-full">
+                        <Card shadow="none" radius="sm" className="w-full md:basis-3/5 border md:h-full">
                             <CardBody className="h-full flex flex-col gap-4">
                                 <div className="flex gap-2 items-center">
                                     <h2 className="text-[15px] italic text-gray-600">RFID : </h2>
@@ -53,7 +60,7 @@ const SingleUser = () => {
                                     <h2 className="text-[15px] italic text-gray-600">Total Family Members :</h2>
                                     <h6 className="text-[15px]">{singleUser?.user?.familyMembers}</h6>
                                 </div>
-                                <div className="flex gap-2 items-center">
+                                <div className="flex flex-wrap gap-2 items-center">
                                     <h2 className="text-[15px] italic text-gray-600">Address :</h2>
                                     <h6 className="text-[15px]">{singleUser?.user?.address}</h6>
                                 </div>

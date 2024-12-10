@@ -17,7 +17,7 @@ const UserProfileDetails = () => {
                                     <Avatar
                                         isBordered
                                         icon={<AvatarIcon />}
-                                        className="w-12 h-12 md:w-20 md:h-20 text-large transition-transform"
+                                        className="w-16 h-16 md:w-20 md:h-20 text-large transition-transform"
                                         classNames={{
                                             base: "bg-gradient-to-br from-blue-200 to-blue-600",
                                             icon: "text-black/80",
@@ -26,11 +26,11 @@ const UserProfileDetails = () => {
                                 </div>
 
                                 <div className="flex flex-col justify-center col-span-3 md:items-center md:gap-1.5">
-                                    <h1 className="md:text-lg font-semibold">{accountDetails?.fullname}</h1>
+                                    <h1 className="text-lg font-semibold">{accountDetails?.fullname}</h1>
 
-                                    <div className="flex gap-1 md:gap-2">
+                                    <div className="flex flex-col md:flex-row gap-1 md:gap-2">
                                         <h4 className="text-[13px] md:text-[15px] text-gray-700">{accountDetails?.email}</h4>
-                                        <Divider orientation="vertical" />
+                                        <Divider orientation="vertical" className="hidden md:block" />
                                         <h4 className="text-[13px] md:text-[15px] text-gray-700">+91 {accountDetails?.phone}</h4>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@ const UserProfileDetails = () => {
                                     <h2 className="text-[15px] italic text-gray-600">Total Family Members :</h2>
                                     <h6 className="text-[15px]">{accountDetails?.familyMembers}</h6>
                                 </div>
-                                <div className="flex gap-2 items-center">
+                                <div className="flex flex-wrap gap-2 items-center">
                                     <h2 className="text-[15px] italic text-gray-600">Address :</h2>
                                     <h6 className="text-[15px]">{accountDetails?.address}</h6>
                                 </div>

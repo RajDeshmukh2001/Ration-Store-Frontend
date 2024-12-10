@@ -23,7 +23,7 @@ const RationItems = () => {
 
     return (
         <div id="ration" className="mt-0 md:mt-10 w-full flex justify-center px-4 py-5 md:px-12 md:py-0 scroll-mt-16 md:scroll-mt-24">
-            <div className="max-w-7xl flex flex-col gap-4">
+            <div className="md:max-w-7xl w-full flex flex-col gap-4">
                 <h1 className="text-lg md:text-2xl font-bold">Ration Items</h1>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-10 place-content-center md:mt-3">
                     {rationItems?.map((item) => (

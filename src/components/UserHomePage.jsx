@@ -11,7 +11,7 @@ const UserHomePage = () => {
                     <img src="./background.jpg" alt="" className="w-full object-cover absolute h-full opacity-35 " />
 
                     <div className="w-full h-full flex md:justify-center md:items-center px-4 py-12 md:px-12 md:py-0">
-                        <div className="max-w-7xl w-full flex flex-col md:flex-row justify-between gap-10 md:gap-0 md:items-center">
+                        <div className="max-w-7xl w-full flex flex-col md:flex-row justify-between md:gap-0 md:items-center">
                             <div className="flex flex-col gap-1 md:gap-4 z-10">
                                 <h1 className="text-[26px] md:text-6xl font-extrabold">Say Goodbye to Ration Hassles</h1>
                                 <h4 className="text-base md:text-xl">Manage entitlements, track distribution, and ensure transparency in one <br /> powerful platform.</h4>
@@ -21,9 +21,8 @@ const UserHomePage = () => {
                                 </div>
                             </div>
 
-                            <div className="flex relative">
-                                <img src="./wheat.png" alt="" className="max-w-52 md:max-w-sm md:absolute -left-40 top-24 z-20 opacity-85" />
-                                <img src="./ricebag.png" alt="" className="max-w-48 md:max-w-sm absolute right-16 bottom-6 md:relative md:right-0 md:bottom-0 opacity-85" />
+                            <div className="flex relative -mt-28">
+                                <img src="./wheat_grains.png" alt="wheat_rice" className="max-w-[350px] lg:max-w-xl" />
                             </div>
                         </div>
                     </div>

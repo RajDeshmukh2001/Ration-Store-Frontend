@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Button from "../../components/Button";
 import { useAuthContext } from "../../context/AuthContext";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
@@ -47,7 +47,10 @@ const ManageRation = () => {
                                 />
                             </CardBody>
                             <CardFooter className="text-small flex flex-col items-start gap-2 md:gap-3">
-                                <h1 className="md:mb-2 font-semibold capitalize">{item.itemname}</h1>
+                                <div className="w-full flex items-center justify-between">
+                                    <h1 className="md:mb-2 font-semibold capitalize">{item.itemname}</h1>
+                                    <Link to="#update" className="bg-primary font-medium py-1 px-2 text-white rounded text-sm border-2 border-primary hover:bg-transparent hover:text-primary transition duration-700 ease-in-out">Update</Link>
+                                </div>
 
                                 <div className="flex items-center justify-between w-full">
                                     <h4 className="text-sm">Antyodaya Anna Yojana</h4>

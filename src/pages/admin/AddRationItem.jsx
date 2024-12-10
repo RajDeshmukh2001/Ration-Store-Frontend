@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { toast } from 'sonner';
 import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { useGetDataContext } from '../../context/GetDataContext';
 import Button from '../../components/Button';
 import { useAuthContext } from '../../context/AuthContext';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
+import { useGetDataContext } from '../../context/GetDataContext';
 
 const rationCard = [
     { key: 1, text: "Antyodaya Anna Yojana (AAY)", value: "AAY" },
@@ -51,7 +52,13 @@ const AddRationItem = () => {
     return (
         <>
             {!loggedIn && <Navigate to="/admin_login" replace />}
-            <div className="w-full flex flex-col gap-10 px-4 py-8 md:py-10 md:mx-16">
+            <div className="w-full flex flex-col gap-5 px-4 py-8 md:py-10 md:mx-16">
+                <Breadcrumbs className="ml-1 block md:hidden">
+                    <BreadcrumbItem>
+                        <Link to="/ration">Ration</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem>Add</BreadcrumbItem>
+                </Breadcrumbs>
                 <div className="flex flex-col items-center ">
                     <div className="w-full border p-5 rounded-md bg-white md:max-w-max md:py-6 lg:px-8">
                         <h1 className="text-lg md:text-xl font-semibold text-primary">Add Ration Item</h1>

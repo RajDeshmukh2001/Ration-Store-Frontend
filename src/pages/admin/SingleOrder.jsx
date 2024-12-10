@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { format } from 'date-fns';
-import { Navigate, useParams } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { useGetDataContext } from '../../context/GetDataContext';
-import { Avatar, Card, CardBody, CardHeader, Chip, Divider } from '@nextui-org/react';
+import { Avatar, BreadcrumbItem, Breadcrumbs, Card, CardBody, CardHeader, Chip, Divider } from '@nextui-org/react';
 
 const images = {
     Wheat: '/wheat_bowl.jpg',
@@ -34,11 +34,18 @@ const SingleOrder = () => {
     return (
         <>
             {!loggedIn && <Navigate to="/admin_login" replace />}
-            <div className="w-full px-4 py-8 md:py-10 md:mx-16">
+            <div className="w-full flex flex-col gap-5 px-4 py-8 md:py-10 md:mx-16">
+                <Breadcrumbs className="ml-1 block md:hidden">
+                    <BreadcrumbItem>
+                        <Link to="/orders">Orders</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem>View Order</BreadcrumbItem>
+                </Breadcrumbs>
+
                 <div className="flex flex-col md:flex-row gap-6 items-stretch">
                     <div className="md:basis-3/5">
-                        <Card className="p-1.5 md:p-2 h-full">
-                            <CardHeader className="flex flex-col items-start gap-2 md:flex-row md:items-center md:justify-between">
+                        <Card radius="sm" className="p-1.5 md:p-2 h-full">
+                            <CardHeader className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
                                 <div>
                                     <h4 className="text-sm">Order ID: #{singleOrder?.order?._id}</h4>
                                 </div>
@@ -74,9 +81,9 @@ const SingleOrder = () => {
                                 <Divider />
 
                                 <div className="grid grid-cols-3 items-center">
-                                    <h2 className="text-[15px] md:text-base">
-                                        Maximum Quantity:
-                                        <span className="font-medium ml-2">{singleOrder?.order?.maxQuantity} kg</span>
+                                    <h2 className="text-[15px] flex flex-wrap md:text-base">
+                                        Max Quantity:
+                                        <span className="font-medium md:ml-2">{singleOrder?.order?.maxQuantity} kg</span>
                                     </h2>
                                     <h4 className="justify-self-end font-medium text-[15px] md:text-base">{singleOrder?.order?.totalQuantity} kg</h4>
                                     <h4 className="justify-self-end font-medium text-[15px] md:text-base">₹ {singleOrder?.order?.totalPrice}</h4>
@@ -86,7 +93,7 @@ const SingleOrder = () => {
                     </div>
 
                     <div className="md:basis-2/5">
-                        <Card className="p-1.5 md:p-2 h-full">
+                        <Card radius="sm" className="p-1.5 md:p-2 h-full">
                             <CardHeader>
                                 <div className="flex flex-col gap-1">
                                     <h2 className="font-medium text-[15px] md:text-base">{singleOrder?.user?.fullname}</h2>

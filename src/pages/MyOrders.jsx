@@ -8,12 +8,12 @@ const MyOrders = () => {
     return (
         <>
             <div className="w-full flex justify-center px-4 md:px-12">
-                <div className="my-4 md:my-10 max-w-7xl w-full flex flex-col gap-4 md:gap-8 md:py-8 md:px-10">
+                <div className="my-4 md:my-10 md:max-w-7xl w-full flex flex-col gap-4 md:gap-8 md:py-8 md:px-10">
                     <Tabs key="orders" variant="underlined" aria-label="Tabs variants">
                         <Tab key="Active" title="Active">
                             {userOrders?.map((order) => (
-                                <Card key={order._id} shadow="none" radius="sm" className="border p-2 md:p-3">
-                                    <CardBody className="flex flex-col gap-2">
+                                <Card key={order._id} shadow="none" radius="sm" className="border py-2 md:p-3">
+                                    <CardBody className="flex flex-col gap-4">
                                         <div className="flex justify-between items-center">
                                             <h4 className="text-sm text-gray-500">#{order._id.slice(0, 8)}</h4>
 
@@ -32,15 +32,15 @@ const MyOrders = () => {
 
                                         <Divider />
 
-                                        <div className="flex flex-col gap-3 text-[15px]">
-                                            <div className="grid grid-cols-4 gap-x-3 md:gap-x-10">
+                                        <div className="flex flex-col gap-4 text-[15px]">
+                                            <div className="grid grid-cols-4 gap-x-1.5 md:gap-x-10">
                                                 <h2 className="font-medium italic">Item</h2>
                                                 <h2 className="font-medium text-center italic">Item Price</h2>
                                                 <h2 className="font-medium text-center italic">Quantity</h2>
-                                                <h2 className="font-medium text-end italic">TotalPrice</h2>
+                                                <h2 className="font-medium text-end italic">Total Price</h2>
                                             </div>
                                             {order.orderItems.map((item) => (
-                                                <div key={item._id} className="grid grid-cols-4 gap-x-3 md:gap-x-10">
+                                                <div key={item._id} className="grid grid-cols-4 gap-x-1.5 md:gap-x-10">
                                                     <h2>{item.item}</h2>
                                                     <h2 className="text-center">{item.itemPrice}</h2>
                                                     <h2 className="text-center">{item.itemTotalQuantity} kg</h2>
@@ -48,7 +48,7 @@ const MyOrders = () => {
                                                 </div>
                                             ))}
                                             <Divider />
-                                            <div className="grid grid-cols-4 gap-x-3 md:gap-x-10">
+                                            <div className="grid grid-cols-4 gap-x-1.5 md:gap-x-10">
                                                 <h2 className="font-semibold">Total</h2>
                                                 <h2></h2>
                                                 <h2 className="text-center font-semibold">{order.totalQuantity} kg</h2>
