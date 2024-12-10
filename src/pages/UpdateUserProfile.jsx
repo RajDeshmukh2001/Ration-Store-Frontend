@@ -27,8 +27,6 @@ const UpdateUserProfile = () => {
         setFormData({ ...formData, rationCardType: value });
     };
 
-    console.log(formData);
-
     const userID = accountDetails?._id?.toString();
 
     return (

@@ -12,6 +12,8 @@ export const AuthContextProvider = ({ children }) => {
 
         try {
             const res = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/auth/authorized_account`, { withCredentials: true, });
+            console.log(res.data);
+            
             setLoggedIn(true);
             setAccountDetails(res.data?.account);
         } catch (error) {
