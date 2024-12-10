@@ -6,15 +6,16 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [accountDetails, setAccountDetails] = useState();
+    const [accountDetails, setAccountDetails] = useState(null);
 
     const auth = async () => {
+
         try {
             const res = await axios.get(`${import.meta.env.VITE_APP_API_BASE_URL}/auth/authorized_account`, { withCredentials: true, });
             setLoggedIn(true);
             setAccountDetails(res.data?.account);
         } catch (error) {
-            setLoggedIn(false);
+            console.error("Error authenticating user:", error);
         }
     }
 
@@ -25,10 +26,10 @@ export const AuthContextProvider = ({ children }) => {
                 toast.success(res.data.message);
                 navigate('/');
                 setLoggedIn(false);
-                setAccountDetails()
+                setAccountDetails(null)
             }
         } catch (error) {
-            toast.error(error.response.data.message); 
+            console.error(error.response.data.message);
         }
     }
 
