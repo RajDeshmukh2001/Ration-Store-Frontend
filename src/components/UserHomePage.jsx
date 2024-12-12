@@ -21,7 +21,7 @@ const UserHomePage = () => {
                                 </div>
                             </div>
 
-                            <div className="flex relative -mt-10 -ml-4 md:m-0">
+                            <div className="flex relative">
                                 <img src="./wheat_grains.png" alt="wheat_rice" className="max-w-[370px] lg:max-w-xl" />
                             </div>
                         </div>
